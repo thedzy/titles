@@ -161,11 +161,6 @@ class Title:
         font_size = self.font_size if font_size is None else font_size
         invert = self.invert if invert is None else invert
 
-        # If size is 0, dynamically size to window
-        if font_size is 0:
-            font_size = 40
-            dynamic_sizing = True
-
         # Validate data
         if not os.path.exists(font_path):
             print('Path to {} cannot be accessed/found'.format(font_path))
@@ -181,6 +176,11 @@ class Title:
 
         # Get terminal/console dimensions
         window_width, window_height = os.get_terminal_size()
+
+        # If size is 0, dynamically size to window
+        if font_size is 0:
+            font_size = int(window_width / len(text) * 2)
+            dynamic_sizing = True
 
         # Create an image of the text
         font = ImageFont.truetype(font_path, font_size)
