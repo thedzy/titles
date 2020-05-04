@@ -178,7 +178,7 @@ class Title:
         window_width, window_height = os.get_terminal_size()
 
         # If size is 0, dynamically size to window
-        if font_size is 0:
+        if font_size == 0:
             font_size = int(window_width / len(text) * 2)
             dynamic_sizing = True
 
@@ -215,7 +215,7 @@ class Title:
                 image_pixel = image_data.getpixel((x, y))
                 image_contrast = int((image_pixel/255) * shader_length)
                 print(shader[image_contrast], end='')
-            print()
+            #print()
 
     def set_characters(self, characters='.\'`^",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$'):
         """
