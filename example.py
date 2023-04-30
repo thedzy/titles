@@ -1,29 +1,25 @@
 #!/usr/bin/env python3
 
 import title
-import platform
+import random
+from pathlib import Path
+
 
 def main():
     # Create a title object
-    titles = title.Title('Hello')
+    with title.Title(resolution=14, font_height=52) as titler:
+        # Reuse the object while changing the invert
+        titler.print('Hello!')
 
-    # Reuse the object while changing the invert
-    titles.print('World!', characters='World!', invert=True)
+        titler.set_font_size(24)
+        titler.set_characters('\\\/|-_')
+        titler.print('World', algorithm='norm')
 
-
-    system = platform.uname().system.lower()
-    if 'darwin' in system:
-        titles.print('Full width', characters='▀▁▂▃▄▅▆▇█▉▊▋▌▍▎▏▐▒▓▔▕▖▗▘▙▚▛▜▝▞▟ ', font_size=0,
-                     font_path='/System/Library/Fonts/MarkerFelt.ttC')
-
-    elif 'windows' in system:
-        titles.print('Full width', characters='▀▁▂▃▄▅▆▇█▉▊▋▌▍▎▏▐▒▓▔▕▖▗▘▙▚▛▜▝▞▟ ', font_size=0,
-                     font_path='C:/Windows/Fonts/Impact.ttf')
-
-    # Set the default for all future prints
-    titles.set_font_size(32)
-    titles.set_characters('\/|-_')
-    titles.print('Test')
+        titler.set_font_size(32)
+        titler.set_characters('▀▁▂▃▄▅▆▇█▉▊▋▌▍▎▏▐▔▕▖▗▘▙▚▛▜▝▞▟■')
+        random_font = random.choice(list(Path('/Library/Fonts').iterdir())).as_posix()
+        titler.set_font(random_font)
+        titler.print('The quick brown fox jumped over the lazy dog', invert=True)
 
 
 if __name__ == '__main__':
