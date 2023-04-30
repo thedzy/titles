@@ -187,6 +187,9 @@ No known bugs.  Works.
 ## New
 ### 2.0
 - Complete rewrite
+- Substantially better than V1
+- Letters are more clear, particularly at low resolutions
+- Character selection closely matches text
 - New methodology is to:
   - subdivide each rendering character into an optional resolution, example resolution 15 is 15x15
   - Record the brightness of each division
