@@ -12,7 +12,7 @@ Print a title
 __author__ = 'thedzy'
 __copyright__ = 'Copyright 2020, thedzy'
 __license__ = 'GPL'
-__version__ = '1.0'
+__version__ = '2.0'
 __maintainer__ = 'thedzy'
 __email__ = 'thedzy@hotmail.com'
 __status__ = 'Developer'
