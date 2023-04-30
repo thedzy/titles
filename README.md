@@ -1,55 +1,59 @@
 # title_creator.py and title.py
 
-Print in large font in your terminal/console
+Print in large font in your terminal/console \
+Complete rewrites
 
-```
-[L;    +L?               /ii*L       /ii*L
-XM)    (Mh     ^+~_,     `--qM`      `--qM`       -!~~!-
-CMtvvvvuMo  -}owft%IX|      mM`         mM`     'zmX%%XmL.
-CMtvvvvuMo  JMf?ii[{Z%      mM          mM      LM1    }MJ
-kM)    rMI  XM?             hM"`        hM"`    xMt^--^nM*
-ndl    |dt  :tqCcYYztl      ~whkCJ      ~whkCJ   [kXkkXk]`
-`-      -`    ,/)i>(+`        -'.'        -'.'     -''-
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-olWWWWWWWWllWWWWWWWWWWWWWWWWWWWWWWWWWWdooolWWWWWWWWWWWWWolWWWWWWWoldWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-l dWWWWWWd rWWWWWWWWWWWWWWWWWWWWWWWWWWWWWr WWWWWWWWWWWWWl dWWWWWWr dWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-d lWo!!oWl dWWlrrllrrlWWWWWo!lllllldWWWWWr WWWWWWWlrrlllr dWWWWWWr dWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-Wr!W!lo!W!rWWl oWWWWo lWWWWo lWWWWWWWWWWWr WWWWWWr dWWWWr dWWWWWWorWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-Wo r!WW!r oWWo lWWWWl lWWWWo oWWWWWWWWWWWr dWWWWWl oWWWd! dWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-WWr!dWWd!!WWWWorrrrrroWWWWWo!dWWWWWWWWWWWWlrrllWWWorrrlll!WWWWWWWlloWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-              ▕▕                                  ▕▕▕        ▕▕▕                                                                                                                     ▕▕
- ▔▃▄▒▒▄▃▖▗▝▐▚▟▓▛▜▋▒▎▕                         ▏▍▋▜▓▛▛▟▞▕ ▁▘▅▙▓▛▛▙▌▔                                                                                                                ▄▟▛▛▜▋▞▂
-▏▒██████▉▇█████████▇▞▏                        ▝▟██████▙▕ ▗▋▉█████▛▏                                                         ▎▋▜▓▓▓▟▄               ▎▞▆▜▓▓▆▐▏                       ▟████▉▓▎
-▂▚███████████▉▊▛▛▓▜▋▃▁                        ▝▆▉████▜▐  ▗▋▇████▓▒▁                                                        ▔▒█████▊▞              ▏▓██████▛▘        ▁▗▝▃▝▂▁        ▆████▛▄▔
-▗▌██████▇▙▅▒▝▂▏▔▁▁▕                           ▎▆▉████▟▘  ▗▅▇████▓▐▕                                                        ▝▆█████▆▝               ▐▜████▉▚▂      ▔▍▓▉███▇▙▃▁     ▕▆████▛▒▔
-▗▀██████▟▕                                    ▎▆▉████▟▘  ▂▅▇████▓▐▕                                                        ▁▖▐▚▅▋▅▍▔               ▔▌████▉▄▏      ▔▄▉████▉▜▎▕     ▕▟████▛▒▔
-▖▀██████▋              ▔▐▀▆▋▀▄▖▕   ▁▂▗▗▂▔▕    ▎▆▉████▟▘  ▂▅▇████▓▐▕              ▔▂▗▗▂▏          ▔▂▗▂▏▕          ▂▄▀▋▆▆▋▚▘▕ ▔▃▐▐▍▃▖▔       ▕▂▝▍▄▘▖▁▔▌████▉▒▏       ▎▉████▛▌▂▐▅▆▀▐▗▁▆████▛▒▔    ▁▏▂▗▗▂▁
-▖▀██████▋             ▂▅▉████▉▆▏   ▌▇██▉▊▙▒▂  ▎▋▉████▟▘  ▂▀▇████▓▐▕            ▕▌▓▉██▉▊▒▏      ▂▞▛▉█▉▇▜▚▏        ▒██████▇▅▕▝▟██████▜▎▕   ▂▄▙▇████▉▜▞▆████▉▒▏     ▕▏▐▉████▉▇▉█████▓▎▟████▛▒▁ ▂▄▋▜▊███▉▜▞▔
-▖▀██████▋   ▔▂▏▁      ▏▌▊████▙▖▕   ▌▉█████▆▝  ▎▋▉████▟▘  ▂▀▇████▓▐▕            ▕▀▊████▉▙▎      ▎▆██████▊▞▔      ▁▞█████▆▃  ▐▓█████▛▚▕  ▕▍▜█████▇▇▉███████▉▄▗▂▎▃▄▀▟▊███████▉▛▟▆▙▓▓▀▗▟████▛▒▘▚▊█████████▉▜▖
-▖▀██████▙▎▄▆▇▉▇▓▅▃▔   ▂▋▇███▉▅     ▞▇████▉▃   ▖▅▉████▟▘  ▂▌▇████▓▐▕             ▁▚▉███▉▇▐     ▕▚▇██████▇▟▂      ▚▛███▉▙▂   ▃▆█████▚▏  ▔▍▇████▇▟▖▗▒▇▉█████▉▐▒▙▇█████▉█████▊▌▁   ▕  ▏▟████▇▜▇████▇▋▘▒▛▉███▋▎
-▖▀██████▉▉████████▌▁  ▖▛▉███▊▞     ▚▉████▉▝   ▖▅▉████▟▘  ▂▌▇████▓▐▕              ▗▀█████▟▃   ▕▚▛████████▉▍▁   ▁▘▛████▙▗    ▃▆█████▞▔  ▘▛▉████▆▎  ▁▄▊█████▉▒▏▕▗▘▄▞▒▍▒▉████▛▞       ▂▙█████████▉▋▎  ▏▚▇███▉▞
-▗▀██████████▇▛▓▜▙▅▘   ▎▉████▓▄     ▌█████▊▝   ▖▅▉████▟▘  ▂▌▇████▓▐▕               ▖▊▉███▉▆▕ ▁▍▇██████████▙▘   ▝▊▉███▟▘     ▘▟█████▞▔ ▕▚██████▚▕   ▕▟▉████▉▒▏      ▕▘▉████▛▞       ▂▙████████▛▍▔   ▔▐▊████▅▏
-▗▀██████▉▓▚▃▏▁▕▕▕     ▎▉████▓▄     ▅████▉▓▎   ▖▀▉████▟▘  ▏▚▇████▓▐▕               ▁▒▛████▛▐▁▘▊▉███▛▆▅▇████▅▁ ▝▟███▉▛▃      ▘▙█████▞▔ ▏▀██████▞     ▌▊████▉▒▏      ▁▍▉████▛▞       ▂▙███████▟▝     ▁▍▊████▋▎
-▗▌██████▙▏            ▖▊▉███▊▞    ▔▆████▉▟▖   ▖▀▉████▟▘  ▏▚▇████▓▐▕                ▕▋▉███▉▛▅▟█████▄▏▂▓████▓▚▖▋████▊▃▁      ▍▜█████▞▔ ▔▌██████▒     ▅▇████▉▒▏      ▔▐▉████▛▞       ▂▙██████▆▝      ▔▍▊████▋▎
-▗▌██████▟             ▗▆▇███▉▋   ▕▘▜████▇▚▏   ▗▀▉████▟▘  ▏▚▊████▓▐▕                 ▃▟██████████▇▟▂ ▕▐▓███▉▇▓▇███▓▞▕       ▍▜█████▞▔  ▒██████▒    ▏▜█████▉▒▏      ▔▄▉████▛▞       ▏▙████▉▇▎       ▏▒▇████▅▏
-▂▚██████▟             ▁▍▛████▓▐▕ ▂▙▉████▛▖▕   ▗▌▉████▟▘  ▏▞▊████▓▐▕                  ▍▉█████████▜▗▕   ▚▇████████▉▚         ▘▙█████▞▔  ▃▜▉████▀▏  ▂▅▇█████▉▒▏      ▏▄▉████▛▞       ▔▟████▊▀▏       ▗▋▇███▉▞
-▎▋██████▟▁             ▕▌▊████▉▟▟▛█████▓▐     ▗▀▉████▙▍  ▏▞▊████▓▄▕                  ▂▌▇███████▊▚     ▎▋███████▉▓▍         ▝▆█████▆▃  ▕▝▊████▇▜▞▚▟███████▉▒▏      ▔▄▉████▊▀       ▕▟████▛▄▔      ▏▞▉████▙▃
-▄▇██████▜▖▕             ▕▃▟▉█████████▇▅▎      ▍▛█████▉▆▁ ▎▓▉████▉▜▏                   ▗▊███████▆▎     ▔▄▉███████▆▝         ▏▞██████▋    ▖▀▛███████▊▆▓█████▓▘      ▁▍██████▇▅▂      ▅████▇▋▂      ▃▆████▇▅▎
-▕▂▐▀▟▙▜▋▐▁                ▕▗▐▌▆▟▙▙▆▚▍▂        ▃▜▇███▉▊▀▁ ▖▟▇████▊▆▏                   ▕▌▛███▇▓▞▗       ▕▖▒▅▟▙▟▅▄▂▕          ▔▄▋▙▙▆▞▝      ▔▝▐▞▚▞▐▎▏▔▍▆▙▙▟▋▒▗       ▂▋▊████▇▜▎      ▝▅▇██▛▅▏       ▔▖▝▝▎▂▕
-                                               ▕▗▝▃▝▎▏    ▕▗▎▃▝▎▏                       ▏▎▝▝▗▁                                                                       ▏▎▝▝▎▂▕        ▕▂▝▎▏
+``` ignorelang
+
+                                                                 @NNNNNNNNNNNL                  @NNNNNNNNNNNL
+@NNNN@             %NNNN@                                        0NNNNNNNNNNNL                  0NNNNNNNNNNNL                                                         @NNNN
+@NNNN@             %@NNN@                                               @NNNNL                         @NNNNL                                                         @NNN@
+@NNNN@             %@NNN@                                               @NNNNL                         @NNNNL                                                         @NNN@
+@NNNN@             %@NNN@                                               @NNNNL                         @NNNNL                                                         @NNN@
+@NNNN@             %@NNN@            __g@@@NNN@@@g_                     @NNNNL                         @NNNNL                     _g@@@NNN@@@g__                      @NNN@
+@NNNN@             %@NNN@          g@NNNNNNNNNNNNNN@g_                  @NNNNL                         @NNNNL                  _g@NNNNNNNNNNNNNN@_                    @NNN@
+@NNNN@_____________@@NNN@        _@NNNNM"`     `"MNNN@_                 @NNNNL                         @NNNNL                 g@NNNNM"`    `"NNNNN@                   @NNN@
+@NNNNNNNNNNNNNNNNNNNNNNN@       g@NNNM`           ^NNNNg                @NNNNL                         @NNNNL                g@NNNM`          %NNNN@                  @NNN@
+@NNNNNMMMMMMMMMMMMMMNNNN@      _@NNNE              %NNN@                @NNNNL                         @NNNNL                @NNN@`            @NNNNL                 @NNN@
+@NNNN@             %@NNN@      @NNNNNNNNNNNNNNNNNNNNNNNN%               @NNNNL                         @NNNNL               @@NNN@             %@NNN@                 @NNN@
+@NNNN@             %@NNN@      @NNNNNNNNNNNNNNNNNNNNNNNN%               @NNNNL                         @NNNNL               @NNNN%              @NNN@                 @NNNE
+@NNNN@             %@NNN@      @NNNN                                    @NNNNL                         @NNNNL               @NNNN@              @NNN@                  ```
+@NNNN@             %@NNN@      @NNNN%                                   %NNNNL                         %NNNNL               %@NNN@             @@NNNE
+@NNNN@             %@NNN@       @NNN@                                   %@NNN@                         %@NNN@                @NNNN_            @NNNN`
+@NNNN@             %@NNN@       `@NNN@_              __                  @NNN@_                         @NNN@_               `@NNN@_         _@NNNNM                 ggggggg
+@NNNN@             %@NNN@         MNNNN@gg_______gg@@NN                   MNNNN@@gggggg_                 MNNNN@@gggggg_       `MNNNN@g_____g@@NNNNF                  @NNNNN@
+@NNNN@             %@NNN@          `%NNNNNNNNNNNNNNNNNM                    ^MNNNNNNNNNN%                  ^MNNNNNNNNNN%         ^MNNNNNNNNNNNNNNF`                   @NNNNN@
+``````              `````             ``"#MMMMMM##"``                         `````````                      `````````             `"#MMMMM#F``                      ```````
+||_         ||-                              |||||-               ||
+|||         ||                                  ||-               ||
+ ||   |__  _||   ________       _|________      ||-        _______||
+ ||  ||\|  ||-  _|/-   \||_     |||/-   --      ||-       ||/-  -\||
+ ||_ |/-|_ ||  _||      |||     ||/             ||-      _||      ||
+ -||_|  ||_||  -||      |||     ||-             ||-      |||      ||
+  |||/  -|||-   ||_    _||-     ||-             ||_       ||_    _||
+  |||    |||     \\\|||//-      ||-              \|||||    \||||//||
+
+▛▀▀▀▔▔▁▂▟▌ ████████████████████████████████▛▔█████████▌ ████████▌ ██████████████████████████████████████████▛▔▂▔▜██████████████████▛▔██████████████████████████████████████████▋ ███████████████████████████████████████████▊ ▟███████████████▉ ▐████████████████████████████████▔▐███████████████
+▆▇█▏▐████▏▐████████████████████████████████■▆█████████▏▐██▛▜████▏▐█████████████████████████████████████████▉ ▟█████████████████████■▟██████████████████████████████████████████▘▕████████████████████████████████████▛ ■▀▀██▌▕████████████████▌ ████████████████████████████████▛ ████████████████
+██▊ ▟███▊ ▔▂▖ ▐█▛▘▃▆■ ▐████▀▁▄▅▖ ██▏▗██▎▕█▊ ▟█▛▔▄▆▄▂█▉ ▟▀▁▅████▊ ▔▃▄▖ █▌ ▔▃ ▐▛▘▃▆▆ ▐█▍▕██▏▕██▏▟█▎ ▔▃▖▕███▉▁  ▄▄▟▛▔▄▆▅ ▜█▖▝█▀▔▄████▌ ▟█▎▗██▎▕█▉ ▝▘▂ ▝▀▂ ▕██ ▝▔▄▄ ▐█▛▔▄▆■ ██▛▀▂▄▖ ▟████▀▔▄▆▖ █▊ ▟█▛▔▄█▀▂▅▆▏▕█▌ ▔▃ ▐██▙▄▖▗▆▆███▏ ▁▃ ▐██▀▂▅▆▏▐████▎▐██▁▄▅▅ ▟▊▁▄▄▖ ▃█▌ ███▛▗▟████▀▔▃▄ ▗██▀▂▅▆▏▕██▛▔▃▄ ▗
+██▎▕████▎▕██▋ █▛ ▃▄▄▆█████▘▐██▘ ▐█▋ ▟█▉ ▐█▍▕█▘▗███▛██▍  ▐██████▎▕██▀▁▟█ ▐███▛ ▟██▛ ▟█▌▕▛ ▖▕▛▘▟█▊ ▐██▏▐████▉ ▐██▘▕███▌ ███▏ ▕██████▏▐█▊ ▟█▉ ▐█▌ ▇█▊ ▟██▏▐█▌ ▟██▘ █▌ ▃▄▄▆██▘▗▇█▛▘ ████▘▗███▘▗█▊ ▜▘▗▇█▘▂▃▄▅■██▏▗████████ ▐██▀█▋ ▟█▉ ▟▉ ▂▃▄▅■████▊ ▟█▛▀▂▄▖ ███▀▔▄████▖▝█▘▗████▛ ▟██▀ ▐▛ ▟██▛ ▟█▘▗██▘ ▟
+█▊ ▐███▉ ▐██▏▕█▎▝▀▀▀▂▟███▋ ▀▀▂▖ ▟█▎ ▀▔  █▉ ▐█▏▝▀▀▔▄█▉ ▐█▖▝▜███▉ ▝▔▂▅██▋ ████▌ ▀▀▘▃▟██▊ ▗█▉  ▟██▍▕██▋ █████▋ ███▏▝▀▀▔▄██▀▁▅█▖▔████▉ ▟█▍ ▀▘▁ ██▏▐██▎▗██▋ ██▏▝▀▀▔▄██▏▝▀▀▘▂▟▍ ▀▀▁▄ ▐███▉ ▝▀▀▁▅███▏ ▟██▊ ▀▀▀▁▄█▋ ▟███████▌ ▀▔▂▆█▘▕██▍ █▋ ▀▀▀▁▄████▎▕█▔▝▀▀▃ ▐█▀ ▕▀▀▀▜███▏ ▗████▉ ▝▀▘▃▖ █▌ ▀▀▘▂▟█▍ ▀▘▃▖▕█
+██▆█████▆███▆███▆▆▇███████▇▆██▎▕███▆▇█▇▇██▆███▆▆▇████▆███▆█████▆▇█████▇▆█████▇▆▇██████▆███▆████▆▇██▇▇█████▇▇████▆▆█████▆████▆████▍▕███▆▇█▇▇██▆███▆███▇▇█▛ ▆▆██████▆▆▇████▆▆███▆██████▆▆██████▇█████▇▆▆████▇▆█████████▆▇████▆███▇▇██▇▆▆███████▇▇█▇▆▇██▆█▇▆▆▆▆▆▆▛▜█▛ ▟██████▇▆███▇▇██▇▆▇█████▆▆█▛ ▟█
+█████████████████████████████▉ ▝▔█████████████████████████████████████████████████████████████████████████████████████████████▏▝▀ ▟█████████████████████▍▕████████████████████████████████████████████████████████████████████████████████████████████████████▙▁▁▃████████████████████████▙▁▔▁▃▟██
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀ ▝▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀ ▝▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 
 
 ```
 
 ## What?
-### title.py
-title.py  is an importable class that you can create an object from and use to print multiple times
+### title2.py
+title2 is a complete rewrite of title and almost backwards compatible
+title2.py  is an importable class that you can create an object and use it to print multiple times
 
 Usage:
 ```python
 # Create a title object
-titles = title.Title(font_size=30)
+titles = title2.Title(font_height=30)
 
 # Reuse the object while changing the invert
 titles.print('Hello')
@@ -58,98 +62,61 @@ titles.print('World!', characters='World!', invert=True)
 ```
 See Example.py
 
-```python
-class Title:
-    def __init__(self, text=None,
-                 characters='.\'`^",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$',
-                 character_aspect=2.4,
-                 font_for_brightness=None, font_path=None, font_size=20,
-                 invert=False):
-        """
-        Initialise
-        :param text: (string) Text to render (optional)
-        :param characters: (string) Characters to render with (optional)
-        :param character_aspect: (float) Width to height ration, ex 2.4 (optional)
-        :param font_path: (string) Path to font file to render with (optional)
-        :param font_for_brightness: (string) Path to font file to evaluate brightness (optional)
-        :param font_size: (int) Font size (optional)
-        :param invert: (bool) Invert the text black/white (optional)
-        :return: (void)
-        """
+### title_creator2.py
+title_creator2 is a complete rewrite of title_creator and not backwards compatible
+title_creator2.py is a single use script that will print a title in a window
 
-    def __get_font_order(self, characters, font_for_brightness):
-        """
-        Calculate the character order from brightest (empty) to darkest (full)
-        :param characters: (string) Characters to order
-        :param font_for_brightness: (string) Path to font file to evaluate brightness (optional)
-        :return: (list)(string) Characters, (int) Length of list
-        """
+``` ignorelang
+▟▘██▋▜▋▝██▛▝██▛ ▜█▉▝▜▋    ▗▆▛▝▇▅ ▝██▛ ▝▛▘▝██▌ ▄▆▘▝■▌▝██▛ ▜▛▘    ▝██▋▀▜▎▗▆▛▝▇▄ ▀██▋▐▛▘      ▜█▉ ▐██▘ ▜▛ ▜██▖▕██▌ ██▊▝█▆ ▐██▏▀▉▝██▌▜▆▖     ▄▇▘▜▆▖ ▜██▏▝▛ ▜█▉▝▜▋▕██▋▜█▆     █▘██▌▜▍▝██▛▝██▌ ▜█▊▝▜▌    ▜██▘    ▜█▙  █▀▐██▘▜██▎▝▛▘    ██▊▝█▆▖ ██▊▜█▆  ▄▇▘▜▆▖ ▜██▏▟▉ ▜▘▝▜█▙▖▝▛     ██▊▝▇▄ ▗▆▛▝▇▅  ▄▇▘▀▇▌
+▔ ██▋ ▔ ██▋▃██▍ ▐█▉▗▊     ██▋ ██▋ ██▋  ▋ ▕██▍▐██▏  ▘ ██▌▟█       ██▋▟▍▕██▌ ██▌ ▝██▌        ▐█▊ ▐██▏ ▐▎ ▗▜██▎██▍ ██▊▕██▏▐██▗▇  ██▌▐██▎   ▐██▏▐██▏▕██▌▟  ▐█▉▗▊  ██▋▐█▛     ▔ ██▌   ██▌▃██▎ ▐█▊▗▋     ▐██▏   ▐▝██▖  ▗██▘  ▜█▙▝      ██▊▗█▛  ██▊▐█▛ ▐██▏▐██▏▕██▍██▌▌  ▋▜██▖▌     ██▊▕██▍██▋ ██▋▐█▉ ▁▁▁
+  ██▋   ██▋▕██▍ ▐█▉ ▘▖    ▜█▋▁██▘ ██▋  ▋ ▕██▍▝██▏  ▖ ██▌▜█▙      ██▋▝▘ ▜█▌ ██▘ ▗▝██▙    ▗▆▅▐█▊ ▐██▏ ▐▎ ▐▎█▛▕██▍ ██▊▔   ▐██▏▝▃ ██▌▐██▏   ▝██▏▐██  ▐██▏  ▐█▉ ▘▖ ██▋▐██       ██▌   ██▌▕██▎ ▐█▊ ▘▖    ▐██▏ ▖▗▍■██▊ ▗██▘▗▖ ▕██▍      ██▊▕██▍ ██▊▐██▏▝██▏▐██  ▐█▊▐█▉   ▊ ▝██▖     ██▊▕██▘▜█▋ ██▌▝█▉ ▐█▌
+  ▀▀▀   ▀▀▀▝▀▀▘ ▀▀▀▝▀▘     ▔▀▝▀■▘ ▔▀▀ ▀  ▝▀▀▘ ▔▀▘▝▘ ▝▀▀▘▝▀▀▘    ▝▀▀▀    ▝▀▝▀▔ ▝▀ ▀▀▀▘    ▀▘▀▀▔  ▔▀▘▝▘  ▀▀▝▘▝▀▀▘ ▀▀▀    ▝▀▀ ▀▀ ▀▀▘▀▀      ▔▀▘▝▀    ▀▀   ▀▀▀▝▀▀ ▀▀▀ ▀▀▘     ▝▀▀▀  ▝▀▀▘▝▀▀▘ ▀▀▀▝▀▘    ▀▀▀▝▀▀▀▘ ▝▀▀▘▀▀▘▀▀▘ ▝▀▀▘      ▀▀▘▝▀▀  ▀▀▀ ▀▀▘ ▔▀▘▝▀    ▀▘ ▀▘  ▝▀▘ ▝▀▘     ▀▀▘▝▀   ▔▀▝▀▔  ▔▀▘▀▀
+  
+▄▄▄▄▄▖ █▏                                 ▗▖         ▕▋         ▗■▀▘                    ▗▖                                           ▗▖                                     ▅▏  ▐▎                 ▐▍                         ▕▋                                                ▆▏
+  ▐▍   █▂▂▂▁   ▁▃▄▄▃       ▁▄▄▄▂▂  ▄    ▄ ▗▖  ▂▄▄▄▂  ▕▋  ▂      ▐▍    ▂▄▄▄▂  ▗▖  ▄       ▂ ▗▖   ▗▖ ▄▂▄▄▃▁▃▄▄▂  ▂▁▄▄▄▂   ▁▃▄▄▃    ▁▂▂▁▐▋      ▂▄▄▄▁  ▄    ▄  ▂▄▄▄▂  ▗▄▄▄     ▐■■ ▐▍▂▂▁    ▃▄▄▃▁     ▐▍  ▂▄▄▄▁▄ ▗▄▄▄▖ ▄    ▄    ▕▋▁▂▂▁   ▗▃▄▄  ▁▄▄▄▂  ▗▖  ▗▖  ▗▖ ▗▂▄▄▄▁       ▁▂▂▁▟▎  ▂▄▄▄▁   ▂▄▄▄▁▄
+  ▐▍   █▀▔▔▀▊ ▗▛▁▁▁▁▜▖    ▐▀   ▝█▏ █▏   ▉ ▐▌ ▟▘   ▝▘ ▕▋▄▀      ▝▜▛▘  ▟▘   ▝▙  ▜▄▛       ▐▋ ▕▋   ▐▍ █▘  ▝█▔  ▐▌ █▘   ▝▙ ▗▛▁▁▁▁▜▖ ▇▀▔▔▝▜▋     ▟▘   ▀▙ ▐▌  ▟▘ ▟▘▁▁▁▝▙ ▕▛       ▐▎  ▐▛▔▔▝▉ ▗▛▁▁▁▁▜▖    ▐▍ ▟▘   ▝▉   ▗▛  ▝▙  ▟▘    ▕█▀▔▔▔▜▖ ▐▛   ▟▀   ▝▙  █▏▗▛█ ▕▛  ▐▍   █     ▗▛▔▔▔▀█▎ ▟▘   ▝▙ ▟▘   ▝█
+  ▐▍   █▏   ▉ ▐▛▔▔▔▔▔▔    ▜▖   ▁█▏ █▏  ▕▉ ▐▌ ▜▖   ▁▁ ▕▋▀▄       ▐▍   ▜▖   ▗▛  ▟▀▄       ▐▋ ▕▊   ▐▍ ▉    ▉   ▐▋ █▖   ▗▉ ▐▛▔▔▔▔▔ ▝▙    ▐▋    ▕▙▁   ▗▊  ▜▍▟▘  ▜▔▔▔▔▔▔ ▕▋       ▐▎  ▐▎   █▏▝▉▔▔▔▔▔▔    ▐▍ ▜▖   ▗▉  ▟▘    ▐▌▟▘     ▕▙    ▗▋ ▐▌   ▜▖   ▁█▏ ▝▙▟▏▝▙▟▏  ▐▎   █▏    ▜▖    ▟▎ █▁   ▗▛ ▜▖   ▗█
+  ▝▘   ▀    ▀  ▝▀■■▀▔      ▝▀■■▀▜▏  ▀■■▀▀ ▝▘  ▀■■■▀  ▕▘  ▀      ▝▘    ▀■■▀▀  ■▘ ▝■      ▐▋  ▝▀■▀▀▘ ▀    ▀   ▝▘ █▀▀■■▀   ▝▀■■▀▔  ▔▀■■▀▀▘      ▀■■▀▘    ▀▘    ▀▀■■▀  ▕▘       ▝▏  ▝▏   ▀  ▔▀■■▀▘     ▝▘  ▀■■▀▀▀ ▝■■■■   ▜▘      ▕▀▀■■▀▘  ▝▘    ▝▀■■▀    ▝▘  ▝▘   ▝▏   ▀      ▝▀■■▀▀▏  ▀■■▀▘   ▀▀■▀▀█
+                                ▟▏                                                      ▐▋                     █▏                                                                                                    ▗▋                                                                    ▗▃▁▁▁▄▛
+ ▄▖▗▄▃ ▄▖▝▜▉                                          ▜█▎         ▄▝▀▘                                                              ▐█▎                                         ▜█▏               ▜█▎                         ▝█▍                                               ▐█▏
+▘  ▐█▘ ▝▘ █▍                                ▀▘        ▟▉         ▟▍                    ▝▀                                           ▐█▏                                    ▟▘   ▟▋                ▟▋                          ▐▉                                                ▟▉
+   ▟▊    ▐█▏▗▆▆▏   ▃ ▆▖     ▗▖ ▄▄  ▆▖  ▕▆▏ ▗▆▏  ▂  ▆ ▕█▌ ▗▅▏    ▇█▘   ▂ ■▄  ▆▅  ▗■    ▕▆▋ ▕▆▖  ▗▆  ▆▆ ▗▆▆  ▄▇▖  ▗▇▏ ▆▆▖   ▂ ▆▖  ▗▖ ▗█▍     ▁▖ ■▄  ▆▖   ▆▏  ▃ ▆▖ ▗▇▍▗■▘    ▇█▘  ▕█▍ ▅▇▖   ▂ ■▄    ▕█▍  ▗▖ ▗▄ ▁■  ▆▆ ▆▆   ▅▎    █▋ ▗▆▖  ▗▇▎▗■▏  ▂ ■▅  ▐▆   ▃▖  ▄▖ ▆▆ ▁▆▆      ▂▖ ▗█▎  ▁▖ ■▄   ▗▖ ▗▄
+  ▕█▌    ▟▋  ▕█▎ ▗█  ▟▋    ▟▍  ▐█ ▕█▏  ▐▊  ▐▛  ▟▍    ▐▉  ▘      █▌  ▗█  ▕█▌ ▝█▍▗▔     ▕█▍ ▐▊   ▟▌  █▛  ▕█▏  ▐▊  ▐▉▏  █▌ ▗▉  ▟▋ ▐▋  ▐█▏    ▗▉  ▐█▍ ▜▋  ▟▘ ▗█▏ ▟▋ ▐█▘       █▍   ▐▉   █▌  ▟▎ ▐▉    ▐▉  ▟▌  ▐█▏   ▟█▘ ▐▊  ▐▛    ▗█▏  ▐▉  ▐▉▘   ▁█▏ ▕█▋ ▐▉  ▐█▍ ▗▛ ▕█▌  ▕█▎    ▟▍  ▐█  ▗▉  ▐█▍ ▟▌  ▐█
+  ▐▉    ▗█▌  ▗█▏ █▊ ■▘    ▐▛   █▍ ▟▊  ▕█▌  █▌ ▟▛     ▟█▆▖      ▗█▎ ▕█▍  ▐█▎  ▐█▎      ▐▉ ▕█▌  ▐█▎ ▕█▍  ▐█▏  ▟▋  █▋  ▗█▏▕█▋ ▝▘ ▐█▏  ▟▛    ▕█▘  ▐█▏ ▐▋ ▗▝  █▊ ■▘  ▟▊       ▐█▏   █▛   █▍ ▟█▏■▀     ▟▋ ▐▛▏  █▍  ▁▇▛   ▐▉ ▗▞     ▟█   ▟▋  ▟▛    █▌  ▕█▍ ▐▊ ▕▍█▍ ▐▏ ▗█▎  ▐▉    ▐▛   █▍ ▕█▘  ▐█▏▐▉▏  █▌
+  ▟▋    ▐▛   ▟▛ ▐█▏       █▌  ▐█▏▕█▍  ▐█▏ ▐█▏▕█▍    ▕█▔▜▉▖     ▐▛  ▐█▏  ▟▋  ▁▔▜▌      ▟▊ ▐█▏  ▟▊  ▐█▏  ▟▛  ▕█▘ ▐█▏  ▟▛ ▐█▏    ▟▋  ▕█▎    ▐█   ▟▌  ▐▋▁▝  ▐█▏    ▕█▍       █▊   ▕█▘  ▐▉▏▕█▍       ▕█▏ █▌  ▐█▏ ▗█▘    ▐▉▁▝      █▘  ▗▉  ▗█▍   ▗█▎  ▟▊  ▐▋▕▏ █▍▗▏  ▟▉   ▟▋   ▕█▍  ▐█▏ ▐▉   ▟▌▕█▌  ▐█▏
+ ▕█▏    ▟▍   █▎ ▝█▂      ▕█▙▁ ▜▛ ▕█▖  ▟▊  ▐▋  █▙▁   ▐▊  ▝▙▁    ▟▍  ▝█▏ ▕▀ ▗▞▘ ▝█▎    ▕█▏ ▐█▂  ▟▌  █▍  ▕█▏  ▐▊  ▐▉  ▟▀  ▝█▁    █▙▁ ▐▉▏    ▝█▁ ▝▘   ▐▙▏   ▝█▂    ▐▊        █▙   ▐▋   ▟▌ ▕█▌▁      ▐▊ ▕█▙▁ ▜▛ ▟▛  ▁   ▕█▞      ▐█▏ ▕▛   ▐▋    ▕█▎ ▕▀   ▐▉   ▐▙   ▕█▏  ▕█▏   ▕█▌▁ ▟▛  ▝█▁ ▝▘ ▕█▙▁ ▜▛
+ ▔▔     ▔    ▔   ▔▔▔▔     ▔▔  █▎  ▔▔  ▔▔  ▔▔   ▔▔▔  ▔    ▔▔   ▗█▏   ▔▔    ▔    ▔▔    ▟▛   ▔▔  ▔▔  ▔    ▔   ▔▔ ▕█▍ ▔     ▔▔▔    ▔▔ ▔▔      ▔▔      ▔▔     ▔▔▔▔  ▔▔         ▔▔  ▔    ▔▔   ▔▔▔     ▔▔  ▔▔  ▔▔▔▔▔▔▔▔▔  ▕▛         ▔▔     ▔       ▔▔     ▔▔   ▔▔    ▔    ▔     ▔▔  ▔▔   ▔▔     ▔▔  █▎
+                             ▗█▏                                                    ▗▀                        ▐▋                                                                                                ▁▁▂▘                                                                     ▁   ▐▘
+                             ▝▀                                                                               ▝▘                                                                                                ▀▀                                                                       ▝▀▀
+                             
+                        
+g=.gg.=g %@%                                _         `@@         _@"%                  __                                           %@E                                        %@                %@`                          @@                                              `@@
+%  @@  ``i@`                                P"         @E         @E                    fP                                            @E                                   @@   @@                @@                           @@                                               @@
+   @@    i@ _#N@  _@^%g     g#^%@p @@  `@% ^@@   g#^B  @E _#P`  =@@%`` gP^@g ^N@  @"    %@  %@   @@  @@_=M@_ =N@  %@L.%N@  g#^@_  gP^%@L    g#^%g ^@@  ?@" _@^%g `@@_%B   ^@N`` @@ _#N_  _@^%g    %@   =^"@p  #"^%@N^@@  %@"   @@ =M@_ @@_=BL_@"^@_ %NE  g@  %B `@@_=N@     _@"^@@  g#^%@  _g^^N@`
+   @@    i@L` 3@  @E _@%   g@   @E @@   @%  @E  @E     @E_^      %@`  @@  iNL  B@@`     %@  @@   @@  @@z  @@=  @L  @%  %@`g@  @@ @@   @    g@   @E %@  @F  @E _@L @@`      @%   @@_` @@  @E _@    %@   ___@@    _@P  %@  @F    @@=  @@ @@=   @E  @@  @@  @@L @"  @@f  @E    @E  @@ g@   @E @@  @@
+   @@    i@%  i@  @E`^"`   @@  _NL @@  i@%  @E  @E     @BNg       @`  @@  i@F   @@      %@  @@   @@  @@`  @@   @%  @E  @@%@@``"` @E  3N    @@   @E  @E %  =@E`^"  @@      %@`   @@%  @@ @@F`^"    %@  g@` @@   _@F    @E %     @@   @B @@`   @E  @@` 3@ %`@E @   @@   @E   @@`  @@ @@   @E %@__#F
+   @@    i@   i@  @@       @@_ %@L @@  =@%  @E  NE     @E %@_     @   @@  @B  _E %@     %@  %N_ z@@  @@   @E   @`  @L  @E @@     @@ _%@    3@   @`  %@_`   NE     @E      `@%   @@   @@  NL       %@  @@  @@  gB`  _  %@@      @@  _@` @@    @E  @B  ?@_f ?@@`   @E   @E   %N_ i@@ 3@   @` _@_
+   #M-   =M=  =M  `%%=     `%M` @L  %#` #%  #%  `%%==  M%  `M=   =M%   %%=^  =M   ##    @E   %M% #M  #M   #%  =M%  @N=="   TM==  `M#` M%    ^%=f`    MF    `%%=   #%       ^M== %M   #M  `M%=`    %M  `M%`?M =M%==#%   @E      f"%==`  #M~   `%%="    #M   %M    M%  -M%    ^M% %M  ^%==`  _%%MN@_
+                                @L                                                   _  @`                         @L                                                                                               _ _E                                                                  @@    @N
+                               =M%                                                   ?%=`                         -M%                                                                                               #%`                                                                   `P#=~=`
 
-    def print(self, text,
-              characters=None, character_aspect=None,
-              font_path=None, font_for_brightness=None, font_size=None,
-              invert=None):
-        """
-        Print text
-        :param text: (string) Text to render
-        :param characters: (string) Characters to render with (optional)
-        :param character_aspect: (float) Width to height ration, ex 2.4 (optional)
-        :param font_path: (string) Path to font file to render with (optional)
-        :param font_for_brightness: (string) Path to font file to evaluate brightness (optional)
-        :param font_size: (int) Font size (optional)
-        :param invert: (bool) Invert the text black/white (optional)
-        :return: (void)
-        """
+╶╪══┳╦══╋╴═╋╴                                 ╷        ═╋╝          ╔╩╩╝                   ╦╴                                        ╶╬╉                                         ═╋╴               ╶╋╝                          ═╋╛                                            ╶╧╋
+╵  ╶╋╴  ╹ ╔╬                                 ╹╵        ╔╉          ╊╣                                               ╻╴                ╋╴                                    ╒╋   ╦╬                ╶╋╴                          ╦╬                                              ╊╣
+   ╊╬     ╊╣╔═╋═  ┎═╵╬╦      ╦═╵╠╉ ╶╬╬  ╒╋  ╤╋╴  ╦═╙╩  ╊╝╷═╩╜     ╚╋╝╵ ╦═╵╩╈  ═╇╗ ═╩╴    ╶╪╬  ═╋╴  ╋╛ ═╋╝╓═╋╗╓═╋╕ ╶╤╋╜╙╊╦  ╔═╹╊╕ ╷╦╜╹╬╬      ╓╦╯╚╋╗ ═╋╗  ╋╴ ╔═╹╊╕╶╪╉╦╩╩     ╬╝╹  ╋╕╔═╋═  ╔═╵╬╦     ┣╣  ╻╤╜╹╋╛ ╦╩╨╩╩╯═╬╬  ╬╛     ╋╗═╩╋╗ ═╋╦╩╩ ╔═╵╚╋╕ ═╋╗ ╔╋  ╒╬ ═╋╛╔═╋╕      ╦═╹╚╋╴  ╦═╵╩╦  ╔═╵╚╋╝
+  ╶╋╝    ╒╋╝ ╶╋╴ ╦╋═╛╹     ╔╬   ╋╝  ╊╝ ╭╋╝  ╊╝ ╶╋╝    ╒╋╩╋        ╦╬  ╊╣  ╒╋╴   ╋╣        ╊╝  ╔╬  ╦╉  ╒╋╝ ╶╋╝ ╒╋╴  ╬╝  ┣╉ ╊╩═╜  ╔╬  ╶╋╝     ╔╋   ╊╝  ╚╬ ╔╝ ╊╩═╜   ┣╉       ╒╉   ╔╋╝ ╒╋  ╦╬═╝╵      ╋  ╦╬  ╔╉   ╔═    ╶╋ ╔╝     ╔╉   ╋╴ ╔╋   ╦╬  ╶╋╛  ╬╣╔╩╋╴╭╝  ╔╋╝ ╒╋     ╶╋╝  ╦╬  ╊╝  ╔╋ ╶╋╴ ╦╝
+  ╔╋     ╊╝  ╊╉═ ╩╋╖╓═╴    ╊╋╦═╚╋  ╒╋╦═╚╋╤╴╶╋╦╴╶╋╗╻╦╴ ╊╝ ╚╋╦╴     ╋╴  ╬╬ ╔╩╵ ╦╦╝╶╋╦═     ╒╋   ╋╦═╩╊╬═ ╊╝  ╬╝  ╊╬═ ╶╋╗╷╤╜  ╋╬╻╦═ ╊╬╦═╚╋╦     ╚╋╖ ╦╝   ╘╋╝   ╋╬╻╦═ ╶╋╴       ╊╉═╴ ╋╝  ╊╬═ ╩╬╻╓═     ╦╬═╴╋╦╦╩╬╬═╔┻╈╦╦╦   ╋╦       ╊╣ ╔╩   ╋╛   ╩╬  ╪╝   ╬╩  ╊╩    ╋╝  ╬╬╴    ╘╋╦═╯╋╦╴ ╊╦ ╔╩   ╬╬╵
+                               ╊╝                                ╔╝                      ╬╝                       ╊╣                                                                                                 ╔╝                                                                  ╻╦╹╵╚╋╗
+                              ╦╋╤                             ╶┳═╯                    ╶┳═                        ╦╋╦                                                                                               ═╝                                                                    ╚╩╦╦═╩
 
-    def set_characters(self, characters='.\'`^",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$'):
-        """
-        Set the default characters to use to render the text
-        :param characters: (string) Characters to render with
-        :return: (void)
-        """
-
-    def set_character_aspect(self, character_aspect=2.4):
-        """
-        Set the default character aspect ratio
-        :param character_aspect: (float) Width to height ration, ex 2.4
-        :return: (void)
-        """
-
-    def set_font_for_brightness(self, font_for_brightness=None):
-        """
-        Set the default font for determining brightness, should approximate terminal/console font
-        :param font_for_brightness: (string) Path to font file
-        :return: (bool) Successfully set
-        """
-
-    def set_font_path(self, font_path=None):
-        """
-        Set the default font for rendering
-        :param font_path: (string) Path to font file
-        :return: (bool) Successfully set
-        """
-
-    def set_font_size(self, font_size=20):
-        """
-        Set the default font size
-        :param font_size: (int) Font size
-        :return: (void)
-        """
-
-    def set_invert(self, invert=False):
-        """
-        Set whether the default is to invert or not
-        :param invert: (bool) To invert text
-        :return: (void)
-        """
-
+╹╹╹╊╩╹╹ ┲╴   ╔╕ ┲┳════    ╻┳┳═┳╻  ╦╴   ╦╸ ┲╴ ╻┳┳═┳╻  ┳  ╻┳═    ┳════╸ ┎┳═┳┱╷ ╺┳   ┳╸      ╶┳ ╶┱    ╦ ╶┳┓   ┏┳╴ ╦════┱ ╔┳════ ┏┳══┳┓      ┲┳═┳┒ ╶┳    ┲╸╺┳════╴╒┳═══┳┒   ═══┳══╸╒╗   ╶┱ ╒┳════    ┲╴      ┏┳   ════┳╦ ┳╻  ╻┳    ╔┳═══┳╮ ┏┳═══┳  ╻┲┳═┳┒ ╺┱  ┳┓  ┳ ┲┳┒  ╔╗    ┳═══┳┒  ╻┲┳═┳┒   ┏┳═┳┓
+   ╊╴   ╊┳┳┳┳╋╛ ╊┳┳┳╸    ╺┫    ┣┓ ╊╴   ╊╸ ╊╴╺╉       ╋┳┻┫      ╋┳┳┳  ╊╝    ╊╴  ╠╋╣        ╶╋ ╶╉    ╋ ╶╉ ╋╦╋╵╊╴ ╊┳┳┳┳┻ ┣╋┳┳╕  ┣╕   ╶╉   ╶╋    ╠╉  ╋  ╋╯ ╺╋┳┳┳  ╘╋┳┳┳┳┛      ╋   ╘╋┳┳┳┳╉ ╘╋┳┳┱     ╊╴     ╆╝ ╋╗   ┏┻╹   ╹╋╋┚     ┣╈┳┳┳╋╣ ┣┳┳┳┳╋╴╺╉    ╠┫ ┗╗┏╝┡╴┢╝ ╊╸┗╈ ╠╣    ╋    ┣╗╶╉    ╠┫ ╋  ┲┳┳┳
+   ╊╴   ╊╴   ╚╛ ╊┳┳┳┳╤    ┖┻┳╋┳┛  ╹╩┳┳═┛  ╊╴ ┖┻┳┳═╝  ╋   ┗┱    ╋      ┗═┳┳╩╹ ╶╩╹ ╹╩╮   ┗═┳┻┚  ┗═┳┳┻┚ ╶╉  ╹  ╊╴ ╊╴     ╚╋┳┳┳┳ ┗╈┳┳┳┹     ╹╩┳┳═┛    ╄╋   ╺╋┳┳┳┳╸╘╝   ┺╕      ╋   ╘╝   ╶╉ ╘╋┳┳┳┳╴   ╊┳┳┳┳╸╋╝╹╹╹┺╕╪╋╤┳┳┳   ╘┛      ╚╋┳┳┳╪┛ ┗╛   ╋╴ ╹┻┳┳┷┚   ╇╩  ╋┛  ╄╸  ┗╋╝    ╋┳┳┳═┛  ╹╩┳┳═┛   ┺═┳═┹
+                     
 ```
 
-### title_creator.py
-title_creator.py  is a single use script that will print a title in a window
-
 ```bash
-usage: title_creator.py [-h] -t TEXT [-s SHADER] [-c CHARACTERS] [-b BORDER] [-fb FONT_BRIGHTNESS] [-f FONT] [-fh FONT_HEIGHT] [-a ASPECT] [-i]
+usage: title_creator2.py [-h] -t TEXT [-a {abs,norm,outline,low}] [-c CHARACTERS | --chars-alpha-symbols | -ca | -cb | -cs | -cl] [--no-blank] [-f FONT]
+                         [-fh FONT_HEIGHT] [-fv [FONT_VARIATION]] [-fb FONT_BRIGHTNESS] [--aspect ASPECT] [-r RESOLUTION] [-i]
 
 Create a title
 
@@ -157,39 +124,64 @@ optional arguments:
     -h, --help
             show this help message and exit
     -t TEXT, --text TEXT
-            Text to display
-            Required
-    -s SHADER, --shader SHADER
-            Light to dark characters to use
-            Default:  .'`^",:;Il!i><~+_-?][}{1)(|\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$
+            text to display
+            required
+    -a {abs,norm,outline,low}, --algorythm {abs,norm,outline,low}
+            algorythm to use
+            choices: abs, norm, outline, low
     -c CHARACTERS, --chars CHARACTERS
-            Specify characters that the system will determine the order of
-            Overrides -s/--shader
-    -b BORDER, --border BORDER
-            Border character
-    -fb FONT_BRIGHTNESS, --font-brightness FONT_BRIGHTNESS
-            Font used to determine brightness when specifying characters
-            This should match or be a close approximation of your terminal/console font
-            Default: /System/Library/Fonts/Menlo.ttc
+            specify characters that the system will used to render the text
+    --chars-alpha-symbols
+            use ascii symbols characters !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+    -ca, --chars-alpha
+            use ascii letter characters abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~default
+    -cb, --chars-blocks
+            use ascii block characters ▀▁▂▃▄▅▆▇█▉▊▋▌▍▎▏▐▔▕▖▗▘▙▚▛▜▝▞▟■
+    -cs, --chars-shapes
+            use ascii shape characters ■□▢▣▤▥▦▧▨▩▪▫▬▭▮▯▰▱▲△▴▵▶▷▸▹►▻▼▽▾▿◀◁◂◃◄◅◆◇◈◉◊○◌◍◎●◐◑◒◓◔◕◖◗◘◙◚◛◜◝◞◟◠◡◢◣◤◥◦◧◨◩◪◫◬◭◮◯◰◱◲◳◴◵◶◷◸◹◺◻◼◽◾◿
+    -cl, --chars-lines
+            use ascii line characters ─━│┃┄┅┆┇┈┉┊┋┌┍┎┏┐┑┒┓└┕┖┗┘┙┚┛├┝┞┟┠┡┢┣┤┥┦┧┨┩┪┫┬┭┮┯┰┱┲┳┴┵┶┷┸┹┺┻┼┽┾┿╀╁╂╃╄╅╆╇╈╉╊╋╌╍╎╏═║╒╓╔╕╖╗╘╙╚╛╜╝╞╟╠╡╢╣╤╥╦╧╨╩╪╫╬╭╮╯╰╱╲╳╴╵╶╷╸╹╺╻╼╽╾╿
+    --no-blank
+            do not use a space for empty character
+            default: False
     -f FONT, --font FONT
-            Font used to write in
-            Default: /System/Library/Fonts/Menlo.ttc
+            font used to write in
+            default: /System/Library/Fonts/Menlo.ttc
     -fh FONT_HEIGHT, --font-height FONT_HEIGHT
-            Font height
-            Default: 25
-    -a ASPECT, --char-aspect ASPECT
-            Aspect ratio of the terminal/console character, ADVANCEDDefault: 2.4
-            Adjust if aspect ration of the image feels off.  Height / width of a character block
+            font height
+            default: 25
+    -fv [FONT_VARIATION], --font-variation [FONT_VARIATION]
+            font variation, ie Italics
+            default: None
+    -fb FONT_BRIGHTNESS, --font-brightness FONT_BRIGHTNESS
+            font used to determine brightness when specifying characters
+            This should match or be a close approximation of your terminal/console font
+            default: /System/Library/Fonts/Menlo.ttc
+    --aspect ASPECT
+            aspect ratio of the terminal/console character, ADVANCEDdefault: 2.2
+            adjust if aspect ration of the image feels off.  Height / width of a character block
+    -r RESOLUTION, --resolution RESOLUTION
+            the resolution of each character, more=cpu
     -i, --invert
-            Invert black/white
-            Default: False
+            invert black/white
+            default: False
 ```
 
 ## Why?
 I always liked starting my programs with a nice title.
 
 ## Improvements?
-Automated way to find fonts cross platform
+Automated way to find fonts cross-platform
 
 ## State?
 No known bugs.  Works.  
+
+## New
+### 2.0
+- Complete rewrite
+- New methodology is to:
+  - subdivide each rendering character into an optional resolution, example resolution 15 is 15x15
+  - Record the brightness of each division
+  - Sample the title into sections (example 15x15)
+  - Compare every section to every character and find the best match
+- Supports multiple matching algorithms
