@@ -213,9 +213,8 @@ class Title:
         for y in range(new_height):
             for x in range(window_width):
                 image_pixel = image_data.getpixel((x, y))
-                image_contrast = int((image_pixel/255) * shader_length)
+                image_contrast = int((image_pixel / 255) * shader_length)
                 print(shader[image_contrast], end='')
-            #print()
 
     def set_characters(self, characters='.\'`^",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$'):
         """
