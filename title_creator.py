@@ -255,7 +255,52 @@ def find_match_abs(pattern: numpy.ndarray, characters: dict, resolution: int) ->
     return matched_character
 
 
-def image_chopper(character: str, font: ImageFont.FreeTypeFont, top_left: numpy.ndarray, bottom_right: numpy.ndarray) -> numpy.ndarray:
+def find_match_abs2(pattern: numpy.ndarray, characters: dict, resolution: int) -> str:
+    """
+    Compare a pattern and find the match in the character set using numpy filtering for count of values with less than 64 difference
+    :param pattern: 2d array of values
+    :param characters: (dict) Characters ans 2d arrays
+    :param resolution: (int) Array size
+    :return:
+    """
+    best_match = numpy.infty
+    for character, matrix in characters.items():
+        mask = (numpy.abs(pattern - matrix) > 64)
+        simularity = numpy.count_nonzero(mask)
+
+        if simularity < best_match:
+            matched_character = character
+            best_match = simularity
+
+    # Return best match
+    return matched_character
+
+
+def find_match_binary(pattern: numpy.ndarray, characters: dict, resolution: int) -> str:
+    """
+    Compare a pattern and find the match in the character set using numpy binary matching
+    :param pattern: 2d array of values
+    :param characters: (dict) Characters ans 2d arrays
+    :param resolution: (int) Array size
+    :return:
+    """
+    best_match = numpy.infty
+    for character, matrix in characters.items():
+        new_pattern = numpy.interp(pattern, (0.0, 256.0), (0, 2)).astype(int)
+        new_matrix = numpy.interp(matrix, (0.0, 256.0), (0, 2)).astype(int)
+        mask = (numpy.abs(new_pattern - new_matrix) == 1)
+        simularity = numpy.count_nonzero(mask)
+
+        if simularity < best_match:
+            matched_character = character
+            best_match = simularity
+
+    # Return best match
+    return matched_character
+
+
+def image_chopper(character: str, font: ImageFont.FreeTypeFont, top_left: numpy.ndarray,
+                  bottom_right: numpy.ndarray) -> numpy.ndarray:
     """
     Chop up image and return 2d array of values
     :param character:
@@ -328,7 +373,8 @@ if __name__ == '__main__':
 
     # Algorithm
     parser.add_argument('-a', '--algorithm',
-                        action='store', dest='algorithm', default='abs', choices=['abs', 'norm', 'outline', 'low'],
+                        action='store', dest='algorithm', default='abs',
+                        choices=['abs', 'norm', 'outline', 'abs2', 'binary'],
                         help='algorithm to use\n'
                              'choices: %(choices)s\n')
 
@@ -342,7 +388,8 @@ if __name__ == '__main__':
                              action='store_const', dest='characters',
                              help='use ascii symbols characters %(const)s')
 
-    parser_char.add_argument('-ca', '--chars-alpha', default=None, const=string.ascii_letters + string.digits + string.punctuation,
+    parser_char.add_argument('-ca', '--chars-alpha', default=None,
+                             const=string.ascii_letters + string.digits + string.punctuation,
                              action='store_const', dest='characters',
                              help='use ascii letter characters %(const)s'
                                   'default')
