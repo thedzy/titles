@@ -59,7 +59,7 @@ if __name__ == '__main__':
 
     # Algorithm
     parser.add_argument('-a', '--algorithms', nargs='+', default=['abs'],
-                        action='store', dest='algorithms', choices=['abs', 'norm', 'outline', 'low'],
+                        action='store', dest='algorithms', choices=['abs', 'norm', 'outline', 'abs2', 'binary'],
                         help='algorithm to use. choices: %(choices)s\n')
 
     # Resolution
