@@ -284,7 +284,8 @@ class Title:
         best_match, matched_character = 0, ' '
         for character, matrix in characters.items():
             new_matrix = numpy.abs(pattern - matrix)
-            distance = sum(1 for x in new_matrix for y in x if y < threshold or y > (256 - threshold))
+            mask = (new_matrix < threshold) | (new_matrix > (256 - threshold))
+            distance = numpy.count_nonzero(mask)
             if distance > best_match:
                 best_match = distance
                 matched_character, matched_matrix = character, matrix
