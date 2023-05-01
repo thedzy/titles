@@ -20,9 +20,10 @@ __status__ = 'Developer'
 import os
 import platform
 import string
-import numpy
+from typing import Optional
 
-from PIL import Image, ImageFont, ImageDraw, ImageStat, ImageChops, ImageOps
+import numpy
+from PIL import Image, ImageFont, ImageDraw, ImageChops, ImageOps
 
 
 class Title:
@@ -121,7 +122,14 @@ class Title:
     def __del__(self):
         pass
 
-    def print(self, text, algorithm=None, invert=False):
+    def print(self, text, algorithm: Optional[str] = None, invert: bool = False) -> None:
+        """
+        Print text
+        :param text: (str) Text to print
+        :param algorithm: (str) Algorithm to use
+        :param invert: (bool) Invert text
+        :return: None
+        """
 
         if algorithm is None:
             algorithm = self.algorithm
@@ -208,7 +216,7 @@ class Title:
                 # Jump to the next "row" of pixels in the image
                 line += self.resolution
 
-    def set_characters(self, characters):
+    def set_characters(self, characters: str) -> None:
         """
         Set the default characters to use to render the text
         :param characters: (string) Characters to render with
@@ -217,7 +225,7 @@ class Title:
         self.characters = str(characters) + ' '
         self.__calculate_characters()
 
-    def set_character_aspect(self, character_aspect=2.4):
+    def set_character_aspect(self, character_aspect: float = 2.4) -> None:
         """
         Set the default character aspect ratio
         :param character_aspect: (float) Width to height ration, ex 2.4
@@ -225,7 +233,7 @@ class Title:
         """
         self.character_aspect = float(character_aspect)
 
-    def set_font(self, font):
+    def set_font(self, font: str) -> None:
         """
         Set the default font for rendering
         :param font: (string) Path to font file
@@ -233,7 +241,7 @@ class Title:
         """
         self.font = ImageFont.FreeTypeFont(font, self.font_height, layout_engine=ImageFont.Layout.BASIC)
 
-    def set_font_size(self, font_height=20):
+    def set_font_size(self, font_height: int = 20) -> None:
         """
         Set the default font size
         :param font_height: (int) Font size
@@ -242,7 +250,7 @@ class Title:
         self.font_height = int(font_height)
         self.font = ImageFont.FreeTypeFont(self.display_font, self.font_height, layout_engine=ImageFont.Layout.BASIC)
 
-    def set_invert(self, invert=False):
+    def set_invert(self, invert: bool = False) -> None:
         """
         Set whether the default is to invert or not
         :param invert: (bool) To invert text
@@ -257,7 +265,7 @@ class Title:
         :param pattern: 2d array of values
         :param characters: (dict) Characters ans 2d arrays
         :param resolution: (int) Array size
-        :return:
+        :return: (str) Character that best matches
         """
 
         matched_character, matched_matrix = ' ', None
@@ -278,7 +286,7 @@ class Title:
         :param pattern: 2d array of values
         :param characters: (dict) Characters and 2d arrays
         :param resolution: (int) Array size
-        :return:
+        :return: (str) Character that best matches
         """
         threshold = resolution / 4
         best_match, matched_character = 0, ' '
@@ -334,7 +342,55 @@ class Title:
         # Return best match
         return matched_character
 
-    def __calculate_bounding_box(self):
+    @staticmethod
+    def find_match_abs2(pattern: numpy.ndarray, characters: dict, resolution: int) -> str:
+        """
+        Compare a pattern and find the match in the character set using numpy filtering for count of values with less than 64 difference
+        :param pattern: 2d array of values
+        :param characters: (dict) Characters ans 2d arrays
+        :param resolution: (int) Array size
+        :return: (str) Character that best matches
+        """
+        best_match = numpy.infty
+        for character, matrix in characters.items():
+            mask = (numpy.abs(pattern - matrix) > 64)
+            simularity = numpy.count_nonzero(mask)
+
+            if simularity < best_match:
+                matched_character = character
+                best_match = simularity
+
+        # Return best match
+        return matched_character
+
+    @staticmethod
+    def find_match_binary(pattern: numpy.ndarray, characters: dict, resolution: int) -> str:
+        """
+        Compare a pattern and find the match in the character set using numpy binary matching
+        :param pattern: 2d array of values
+        :param characters: (dict) Characters ans 2d arrays
+        :param resolution: (int) Array size
+        :return: (str) Character that best matches
+        """
+        best_match = numpy.infty
+        for character, matrix in characters.items():
+            new_pattern = numpy.interp(pattern, (0.0, 256.0), (0, 2)).astype(int)
+            new_matrix = numpy.interp(matrix, (0.0, 256.0), (0, 2)).astype(int)
+            mask = (numpy.abs(new_pattern - new_matrix) == 1)
+            simularity = numpy.count_nonzero(mask)
+
+            if simularity < best_match:
+                matched_character = character
+                best_match = simularity
+
+        # Return best match
+        return matched_character
+
+    def __calculate_bounding_box(self) -> tuple:
+        """
+        Calculate the bounding box for the rending font
+        :return: (tuple)(tuple) Upper, lower coordinates
+        """
 
         # Render a sample character to get crop dimensions
         character_image = Image.new('L', (self.sample_width * 2, self.sample_height * 2), 0)
@@ -352,7 +408,11 @@ class Title:
 
         return upper_left, lower_right
 
-    def __calculate_characters(self):
+    def __calculate_characters(self) -> None:
+        """
+        Calculate the array information for each character for mapping
+        :return: None
+        """
 
         self.character_info = {}
 
@@ -365,11 +425,10 @@ class Title:
                         bottom_right: numpy.ndarray) -> numpy.ndarray:
         """
         Chop up image and return 2d array of values
-        :param character:
-        :param font:
-        :param top_left:
-        :param bottom_right:
-        :return:
+        :param character: Character to slice
+        :param top_left: (tuple) Coordinates
+        :param bottom_right:(tuple) Coordinates
+        :return: (numpy.ndarray) Matrix of brightness values
         """
 
         # Get image size
