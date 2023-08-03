@@ -75,10 +75,6 @@ def main() -> None:
     # Load font to be used
     font = ImageFont.FreeTypeFont(options.font.name, options.font_height, layout_engine=ImageFont.Layout.BASIC)
 
-    # Get height
-    _, top, _, bottom = font.getbbox(string.ascii_letters)
-    text_height = int((bottom - top) * 1.4)
-
     # If specified, set font variation, on error list variations
     font = font.font_variant()
     # print(font.get_variation_axes())
@@ -94,6 +90,10 @@ def main() -> None:
 
             except OSError:
                 print('Font does not support variations')
+
+    # Get height
+    _, top, _, bottom = font.getbbox(string.ascii_letters)
+    text_height = int((bottom - top) * 1.4)
 
     # Generate images for each lines
     text_images = []
@@ -125,7 +125,7 @@ def main() -> None:
         image_width = text_image_width if text_image_width > image_width else image_width
 
     # Find the scale for scaling down
-    resize_ratio = window_width / image_width if image_width > window_width else 1
+    resize_ratio = window_width / image_width if image_width > window_width - 2 else 1
 
     # Print Characters
     for text_image in text_images:
@@ -165,14 +165,47 @@ def main() -> None:
 
                 # Find matching character for section append string
                 matching_algorithm = globals()[f'find_match_{options.algorithm}']
-                printed_line += matching_algorithm(pattern, characters, options.resolution)
+                char_invert, char_clear = '\033[7m', f'\033[0m'
+                character, inverted = matching_algorithm(pattern, characters, resolution=options.resolution)
+                # shade, shade_end = get_shade(pattern, options.shade, inverted)
+                printed_line += f'{char_invert if inverted else ""}{character}{char_clear if inverted else ""}'
             print(printed_line)
 
             # Jump to the next "row" of pixels in the image
             line += options.resolution
 
 
-def find_match_norm(pattern: numpy.ndarray, characters: dict, resolution: int) -> str:
+def get_shade(pattern: float, offset: int, inverted: bool) -> int:
+    """
+    Calculate ansi code for 0-256 brightness value
+    :param brightness: (float) 0-256 brightness
+    :return: (str, str) Ansi code for color, ansi code for reset
+    """
+    shade_start = '\033[7m' if inverted else ''
+    shade_end = f'\033[0m'
+
+    if offset == 0:
+        return shade_start, shade_end
+
+    if not inverted:
+        pattern = 255 - pattern
+
+    brightness = numpy.average(pattern)
+    brightness = 256 - brightness
+    ansi_value = 232 + round(brightness / (256 / 23))
+    ansi_value = 232 + (23 - (round(brightness / (256 / 23))))
+
+    # Floor and ceiling the value to 232, 255
+    ansi_value = min(max(ansi_value + (23 - offset), 232), 255)
+    shade = f'\033[38;5;{ansi_value}m'
+
+    if inverted:
+        shade_start = shade + shade_start
+
+    return shade_start, shade_end
+
+
+def find_match_norm(pattern: numpy.ndarray, characters: dict, **kwargs: dict) -> str:
     """
     Compare a pattern and find the match in the character set using numpy linear algebra
     :param pattern: 2d array of values
@@ -180,6 +213,7 @@ def find_match_norm(pattern: numpy.ndarray, characters: dict, resolution: int) -
     :param resolution: (int) Array size
     :return:
     """
+    invert = False
 
     matched_character, matched_matrix = ' ', None
     min_distance = numpy.inf
@@ -190,10 +224,37 @@ def find_match_norm(pattern: numpy.ndarray, characters: dict, resolution: int) -
             matched_character, matched_matrix = character, matrix
 
     # Return best match
-    return matched_character
+    return matched_character, invert
 
 
-def find_match_outline(pattern: numpy.ndarray, characters: dict, resolution: int) -> str:
+def find_match_inorm(pattern: numpy.ndarray, characters: dict, **kwargs: dict) -> str:
+    """
+    Compare a pattern and find the match in the character set using numpy linear algebra
+    Compare again inverted character
+    Makes marginally better results when using block characters at a slight cost of performance 5-6%
+    :param pattern: 2d array of values
+    :param characters: (dict) Characters and 2d arrays
+    :param resolution: (int) Array size
+    :return:
+    """
+    invert = False
+
+    matched_character, matched_matrix = ' ', None
+    min_distance = numpy.inf
+    for character, matrix in characters.items():
+        for mode in (False, True):
+            if mode:
+                matrix = 255 - matrix
+            distance = numpy.linalg.norm(pattern - matrix)
+            if distance < min_distance:
+                min_distance = distance
+                matched_character, matched_matrix, invert = character, matrix, mode
+
+    # Return best match
+    return matched_character, invert
+
+
+def find_match_outline(pattern: numpy.ndarray, characters: dict, **kwargs: dict) -> str:
     """
     Compare a pattern and find the match in the character set using count of close matches
     :param pattern: 2d array of values
@@ -201,7 +262,9 @@ def find_match_outline(pattern: numpy.ndarray, characters: dict, resolution: int
     :param resolution: (int) Array size
     :return:
     """
-    threshold = resolution / 4
+    invert = False
+
+    threshold = kwargs['image_width']
     best_match, matched_character = 0, ' '
     for character, matrix in characters.items():
         new_matrix = numpy.abs(pattern - matrix)
@@ -212,10 +275,10 @@ def find_match_outline(pattern: numpy.ndarray, characters: dict, resolution: int
             matched_character, matched_matrix = character, matrix
 
     # Return best match
-    return matched_character
+    return matched_character, invert
 
 
-def find_match_low(pattern: numpy.ndarray, characters: dict, resolution: int) -> str:
+def find_match_low(pattern: numpy.ndarray, characters: dict, **kwargs: dict) -> str:
     """
     Compare a pattern and find the match in the character set using count of close low matches
     :param pattern: 2d array of values
@@ -223,6 +286,8 @@ def find_match_low(pattern: numpy.ndarray, characters: dict, resolution: int) ->
     :param resolution: (int) Array size
     :return:
     """
+    invert = False
+
     threshold = 40
     best_match, matched_character = 0, ' '
     for character, matrix in characters.items():
@@ -233,10 +298,10 @@ def find_match_low(pattern: numpy.ndarray, characters: dict, resolution: int) ->
             matched_character, matched_matrix = character, matrix
 
     # Return best match
-    return matched_character
+    return matched_character, invert
 
 
-def find_match_abs(pattern: numpy.ndarray, characters: dict, resolution: int) -> str:
+def find_match_abs(pattern: numpy.ndarray, characters: dict, **kwargs: dict) -> str:
     """
     Compare a pattern and find the match in the character set using numpy sum(abs(matrix-matrix))
     :param pattern: 2d array of values
@@ -244,6 +309,8 @@ def find_match_abs(pattern: numpy.ndarray, characters: dict, resolution: int) ->
     :param resolution: (int) Array size
     :return:
     """
+    invert = False
+
     best_match = numpy.infty
     for character, matrix in characters.items():
         simularity = numpy.sum(numpy.abs(pattern - matrix))
@@ -252,10 +319,36 @@ def find_match_abs(pattern: numpy.ndarray, characters: dict, resolution: int) ->
             best_match = simularity
 
     # Return best match
-    return matched_character
+    return matched_character, invert
 
 
-def find_match_abs2(pattern: numpy.ndarray, characters: dict, resolution: int) -> str:
+def find_match_iabs(pattern: numpy.ndarray, characters: dict, **kwargs: dict) -> str:
+    """
+    Compare a pattern and find the match in the character set using numpy sum(abs(matrix-matrix))
+    Compare again inverted character
+    Makes marginally better results when using block characters at a slight cost of performance 5-6%
+    :param pattern: 2d array of values
+    :param characters: (dict) Characters and 2d arrays
+    :param resolution: (int) Array size
+    :return:
+    """
+    invert = False
+
+    best_match = numpy.infty
+    for character, matrix in characters.items():
+        for mode in (False, True):
+            if mode:
+                matrix = 255 - matrix
+            simularity = numpy.sum(numpy.abs(pattern - matrix))
+            if simularity < best_match:
+                best_match = simularity
+                matched_character, matched_matrix, invert = character, matrix, mode
+
+    # Return best match
+    return matched_character, invert
+
+
+def find_match_abs2(pattern: numpy.ndarray, characters: dict, **kwargs: dict) -> str:
     """
     Compare a pattern and find the match in the character set using numpy filtering for count of values with less than 64 difference
     :param pattern: 2d array of values
@@ -263,20 +356,22 @@ def find_match_abs2(pattern: numpy.ndarray, characters: dict, resolution: int) -
     :param resolution: (int) Array size
     :return:
     """
+    invert = False
+
     best_match = numpy.infty
     for character, matrix in characters.items():
         mask = (numpy.abs(pattern - matrix) > 64)
-        simularity = numpy.count_nonzero(mask)
+        similarity = numpy.count_nonzero(mask)
 
-        if simularity < best_match:
+        if similarity < best_match:
             matched_character = character
-            best_match = simularity
+            best_match = similarity
 
     # Return best match
-    return matched_character
+    return matched_character, invert
 
 
-def find_match_binary(pattern: numpy.ndarray, characters: dict, resolution: int) -> str:
+def find_match_binary(pattern: numpy.ndarray, characters: dict, **kwargs: dict) -> str:
     """
     Compare a pattern and find the match in the character set using numpy binary matching
     :param pattern: 2d array of values
@@ -284,19 +379,21 @@ def find_match_binary(pattern: numpy.ndarray, characters: dict, resolution: int)
     :param resolution: (int) Array size
     :return:
     """
+    invert = False
+
     best_match = numpy.infty
     for character, matrix in characters.items():
         new_pattern = numpy.interp(pattern, (0.0, 256.0), (0, 2)).astype(int)
         new_matrix = numpy.interp(matrix, (0.0, 256.0), (0, 2)).astype(int)
         mask = (numpy.abs(new_pattern - new_matrix) == 1)
-        simularity = numpy.count_nonzero(mask)
+        similarity = numpy.count_nonzero(mask)
 
-        if simularity < best_match:
+        if similarity < best_match:
             matched_character = character
-            best_match = simularity
+            best_match = similarity
 
     # Return best match
-    return matched_character
+    return matched_character, invert
 
 
 def image_chopper(character: str, font: ImageFont.FreeTypeFont, top_left: numpy.ndarray,
@@ -332,6 +429,24 @@ def image_chopper(character: str, font: ImageFont.FreeTypeFont, top_left: numpy.
 
 
 if __name__ == '__main__':
+
+    def value_range(low: int, high: int):
+        def check_value(number: int):
+            try:
+                number = int(number)
+            except ValueError:
+                raise argparse.ArgumentTypeError(f'{number} is not an integer')
+            if number > high:
+                print('too high')
+                raise argparse.ArgumentTypeError(f'{number} is above the range [{low}, {high}]')
+            if number < low:
+                print('too low')
+                raise argparse.ArgumentTypeError(f'{number} is below the range [{low}, {high}]')
+            return number
+
+        return check_value
+
+
     def parser_formatter(format_class, **kwargs):
         """
         Use a raw parser to use line breaks, etc
@@ -374,7 +489,7 @@ if __name__ == '__main__':
     # Algorithm
     parser.add_argument('-a', '--algorithm',
                         action='store', dest='algorithm', default='abs',
-                        choices=['abs', 'norm', 'outline', 'abs2', 'binary'],
+                        choices=['iabs', 'abs', 'abs2', 'norm', 'inorm', 'low', 'outline', 'binary'],
                         help='algorithm to use\n'
                              'choices: %(choices)s\n')
 
@@ -414,7 +529,6 @@ if __name__ == '__main__':
                              'default: %(default)s')
 
     # Font information
-
     parser.add_argument('-f', '--font', type=argparse.FileType('r'),
                         action='store', dest='font', default=system_font,
                         help='font used to write in\n'
@@ -433,17 +547,19 @@ if __name__ == '__main__':
     parser.add_argument('-fb', '--font-brightness', type=argparse.FileType('r'),
                         action='store', dest='font_brightness', default=system_font,
                         help='font used to determine brightness when specifying characters\n'
-                             'This should match or be a close approximation of your terminal/console font\n'
+                             'this should match or be a close approximation of your terminal/console font\n'
                              'default: %(default)s')
 
     # Character aspect ratio
     parser.add_argument('--aspect', type=float,
                         action='store', dest='aspect', default=2.2,
-                        help='aspect ratio of the terminal/console character, ADVANCED'
+                        help='aspect ratio of the terminal/console character, ADVANCED\n'
+                             'represented at 1:x, width:height, a value of 2 would mean pixels and twice as high as wide\n'
                              'default: %(default)s\n'
-                             'adjust if aspect ration of the image feels off.  Height / width of a character block')
+                             'adjust if aspect ration of the image feels off.  Height / width of a character block\n'
+                             'increasing the height will cause the programme to compensate and reduce the height\n')
 
-    # Black/white
+    # Details
     parser.add_argument('-r', '--resolution', type=int,
                         action='store', dest='resolution', default=15,
                         help='the resolution of each character, more=cpu')
@@ -452,6 +568,11 @@ if __name__ == '__main__':
     parser.add_argument('-i', '--invert',
                         action='store_true', dest='black_on_white', default=False,
                         help='invert black/white\n'
+                             'default: %(default)s')
+    parser.add_argument('-s', '--shade',
+                        action='store', dest='shade', type=value_range(0, 23), default=0,
+                        help='amount of grey shades to use\n'
+                             'there are 24 shades of gray (0-23)\n'
                              'default: %(default)s')
 
     # Debug
