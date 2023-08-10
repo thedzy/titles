@@ -68,6 +68,7 @@ def main() -> None:
         for index, char in enumerate(options.characters):
             # Draw the character in the center of the image
             draw.text((0, 0), char, font=font, fill=256)
+        draw.text((0, 0), '█', font=font, fill=256)
 
         # Get the bounding box of the characters
         bounding_box = character_image.getbbox()
