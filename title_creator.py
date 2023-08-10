@@ -25,6 +25,7 @@ import string
 
 import numpy
 from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageOps
+import json
 
 
 def main() -> None:
@@ -41,30 +42,41 @@ def main() -> None:
         options.characters += ' '
 
     characters = {}
+    if options.load:
+        try:
+            characters = json.load(open(options.load, 'r'))
+            first_key, first_value = next(iter(characters.items()))
+            options.resolution = len(first_value)
 
-    # Dimension to create a sample character
-    sample_height, sample_width = 200, 200
+            for character in characters:
+                characters[character] = [numpy.array(inner_array) for inner_array in characters[character]]
+        except FileNotFoundError:
+            print(f'File not found: {options.load}')
+            exit(1)
+    else:
+        # Dimension to create a sample character
+        sample_height, sample_width = 200, 200
 
-    # Load font to be used for brightness
-    font = ImageFont.FreeTypeFont(options.font_brightness.name, sample_height, layout_engine=ImageFont.Layout.BASIC)
+        # Load font to be used for brightness
+        font = ImageFont.FreeTypeFont(options.font_brightness.name, sample_height, layout_engine=ImageFont.Layout.BASIC)
 
-    # Render a sample character to get crop dimensions
-    character_image = Image.new('L', (sample_width * 2, sample_height * 2), 0)
-    draw = ImageDraw.Draw(character_image)
+        # Render a sample character to get crop dimensions
+        character_image = Image.new('L', (sample_width * 2, sample_height * 2), 0)
+        draw = ImageDraw.Draw(character_image)
 
-    # Draw each character over each other
-    for index, char in enumerate(options.characters):
-        # Draw the character in the center of the image
-        draw.text((0, 0), char, font=font, fill=256)
+        # Draw each character over each other
+        for index, char in enumerate(options.characters):
+            # Draw the character in the center of the image
+            draw.text((0, 0), char, font=font, fill=256)
 
-    # Get the bounding box of the characters
-    bounding_box = character_image.getbbox()
-    upper_left = bounding_box[0:2]
-    lower_right = bounding_box[2:4]
+        # Get the bounding box of the characters
+        bounding_box = character_image.getbbox()
+        upper_left = bounding_box[0:2]
+        lower_right = bounding_box[2:4]
 
-    # Get brightness of a character in matrix
-    for supplied_char in options.characters:
-        characters[supplied_char] = image_chopper(supplied_char, font, upper_left, lower_right)
+        # Get brightness of a character in matrix
+        for supplied_char in options.characters:
+            characters[supplied_char] = image_chopper(supplied_char, font, upper_left, lower_right)
 
     # Get window/terminal size
     try:
@@ -126,6 +138,20 @@ def main() -> None:
 
     # Find the scale for scaling down
     resize_ratio = window_width / image_width if image_width > window_width - 2 else 1
+
+    # Save character map
+    if options.save is not None:
+        for character in characters:
+            characters[character] = characters[character].tolist()
+        answer = ''
+        while answer != 'yes' and answer != 'no' and answer != 'y' and answer != 'n':
+            if os.path.exists(options.save):
+                print(f'File {options.save} already exists. Do you want to replace it? (yes/no): ', end='')
+                answer = input().lower()
+                if answer == 'no' or answer == 'n':
+                    print('Aborting')
+                    exit(0)
+        json.dump(characters, open(options.save, 'w+'))
 
     # Print Characters
     for text_image in text_images:
@@ -574,6 +600,13 @@ if __name__ == '__main__':
                         help='amount of grey shades to use\n'
                              'there are 24 shades of gray (0-23)\n'
                              'default: %(default)s')
+
+    parser.add_argument('--save', default=None,
+                        action='store', dest='save',
+                        help='save character map to file')
+    parser.add_argument('--load', default=None,
+                        action='store', dest='load',
+                        help='load character map from file')
 
     # Debug
     parser.add_argument('--debug', default=False,
